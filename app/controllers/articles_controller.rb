@@ -35,17 +35,18 @@ class ArticlesController < ApplicationController
     redirect_to article_path(@article)
   end
 
-  def delete
+  def destroy
+    @article = Article.find(params[:id])
     @article.destroy
     
-    flash.alert.now = "Article deleted"
+    flash.alert = "Article deleted"
     
     redirect_to articles_path
   end
 
   private
     def article_params
-      params.require(:article).permit(:title, :body)
+      params.require(:article).permit(:title, :body, :tag_list)
     end
 
 end
