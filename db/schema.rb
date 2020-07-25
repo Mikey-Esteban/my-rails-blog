@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_24_220757) do
+ActiveRecord::Schema.define(version: 2020_07_25_175125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,20 @@ ActiveRecord::Schema.define(version: 2020_07_24_220757) do
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.bigint "article_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["article_id"], name: "index_attachments_on_article_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -46,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_07_24_220757) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "attachments", "articles"
   add_foreign_key "comments", "articles"
   add_foreign_key "taggings", "articles"
   add_foreign_key "taggings", "tags"
