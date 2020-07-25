@@ -6,7 +6,15 @@
   <% end %>
 </p>
 
+<<<<<<< HEAD
 <p><%= image_tag @article.image.url %></p>
+=======
+<p>
+  <% if @article.image.exists? %>
+    <%= image_tag @article.image.url(:medium) %><br>
+  <% end %>
+</p>
+>>>>>>> old_state
 <p><%= @article.body %></p>
 
 <h3>Comments (<%= @article.comments.size %>)</h3>

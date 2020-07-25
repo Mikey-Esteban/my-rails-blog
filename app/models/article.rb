@@ -2,9 +2,15 @@ class Article < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :tags, through: :taggings, dependent: :destroy
+<<<<<<< HEAD
   has_attached_file :image
   validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
+=======
+  has_attached_file :image, styles: { medium: '500x500>', thumb: '150x150>' }
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+  
+>>>>>>> old_state
   def tag_list
     tags.join(', ')
   end
