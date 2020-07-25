@@ -1,7 +1,7 @@
 class Article < ApplicationRecord
-  has_many :comments, dependent: :delete_all
+  has_many :comments, dependent: :destroy
   has_many :taggings
-  has_many :tags, through: :taggings, dependent: :delete_all
+  has_many :tags, through: :taggings, dependent: :destroy
 
   def tag_list
     tags.join(', ')
