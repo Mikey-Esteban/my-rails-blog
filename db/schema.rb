@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2020_07_25_192444) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "author"
-    t.text "body"
+    t.string "name"
+    t.text "comment"
     t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

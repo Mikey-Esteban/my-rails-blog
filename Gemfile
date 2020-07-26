@@ -23,6 +23,12 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 # Use paperclip for images
 gem 'paperclip'
+# Use bootstrap 4.5
+gem 'bootstrap', '~> 4.5.0'
+# Use jQuery for bootstrap
+gem 'jquery-rails'
+# Use simple_form for bootstrap
+gem 'simple_form'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

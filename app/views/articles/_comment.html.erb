@@ -1,5 +1,18 @@
-<div>
-  <h4>Comment by <%= comment.author %></h4>
-  <p class='comment'><%= comment.body %></p>
+<!-- <div class="container">
+  <h5>Comment by <%= comment.name %></h5>
+  <p class='comment'><%= comment.comment %></p>
   <p>Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</p>
+</div> -->
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h5>Comment by <%= comment.name %></h5>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p class='comment'><%= comment.comment %></p>
+        <footer class="blockquote-footer">Posted <%= distance_of_time_in_words(comment.article.created_at, comment.created_at) %> later</footer>
+      </blockquote>
+    </div>
+  </div>
 </div>

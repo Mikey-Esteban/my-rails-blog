@@ -1,11 +1,13 @@
-<h1>Articles List</h1>
-
-<ul id='articles'>
-  <% @articles.each do |article| %>
-    <li>
-      <%= link_to article.title, article_path(article), class: 'article_title', id: 'article_#{article.id}' %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Create a New Article', new_article_path, class: 'new_article' %>
+<div class="container">
+  <div class="jumbotron text-white bg-dark">
+    <h1 class="display-4">Hello, world!</h1>
+    <p class="lead">This is a simple blog built using Ruby on Rails. Click below to check out an article.</p>
+    <hr class="my-4">
+    <% @articles.each do |article| %>
+      <p>
+        <a class="text-white" href="articles/<%= article.id %>" role="button"><%= article.title %></a>
+      </p>
+    <% end %>
+    <a class="btn btn-light btn-lg" href="articles/new" role="button">Create a New Article</a>
+  </div>
+</div>
