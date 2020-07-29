@@ -29,6 +29,8 @@ gem 'bootstrap', '~> 4.5.0'
 gem 'jquery-rails'
 # Use simple_form for bootstrap
 gem 'simple_form'
+# Use sorcery for authentication
+gem 'sorcery'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

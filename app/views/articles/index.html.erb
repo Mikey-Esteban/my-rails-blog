@@ -2,12 +2,25 @@
   <div class="jumbotron text-white bg-dark">
     <h1 class="display-4">Hello, world!</h1>
     <p class="lead">This is a simple blog built using Ruby on Rails. Click below to check out an article.</p>
+    <% if @first_time %>
+      <a class="btn btn-light btn-lg" href="authors/new" role="button">Create Account</a> to get admin privileges !
+    <% end %>
     <hr class="my-4">
     <% @articles.each do |article| %>
       <p>
         <a class="text-white" href="articles/<%= article.id %>" role="button"><%= article.title %></a>
       </p>
     <% end %>
-    <a class="btn btn-light btn-lg" href="articles/new" role="button">Create a New Article</a>
+    <% if logged_in? %>
+      <div class="card w-50" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title text-dark">Welcome <%= "#{current_user.username}" %></h5>
+          <p class="card-text text-muted">Here are your admin privileges..</p>
+          <a href="articles/new" class="card-link">Create New Article</a>
+          <a href="authors" class="card-link">Checkout All Admins</a>
+          <a href="authors/new" class="card-link">Add Admin</a>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

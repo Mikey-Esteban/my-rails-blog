@@ -12,7 +12,7 @@
       <%= image_tag @article.image.url(:medium) %><br>
     <% end %>
   </p>
-  <p><%= @article.body %></p>
+  <p><%= simple_format @article.body %></p>
 
   <!-- <h4>Comments (<%= @article.comments.size %>)</h4> -->
   <%= render partial: 'articles/comment', collection: @article.comments.reverse %>
@@ -22,16 +22,18 @@
     <div class="col mb-4">
         <%= render partial: 'comments/form' %>
     </div>
-    <div class="col mb-4">
-      <div class="container">
-        <div class="card">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item"><%= link_to 'Articles List', articles_path %></li>
-            <li class="list-group-item"><%= link_to 'Edit', edit_article_path(@article) %></li>
-            <li class="list-group-item"><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Really delete article?' } %></li>
-          </ul>
+    <% if logged_in? %>
+      <div class="col mb-4">
+        <div class="container">
+          <div class="card">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><%= link_to 'Articles List', articles_path %></li>
+              <li class="list-group-item"><%= link_to 'Edit', edit_article_path(@article) %></li>
+              <li class="list-group-item"><%= link_to 'Delete', article_path(@article), method: :delete, data: { confirm: 'Really delete article?' } %></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

@@ -1,6 +1,18 @@
 class ArticlesController < ApplicationController
+  before_action :zero_authors_or_authenticated, except: [:index, :show]
+
+  def zero_authors_or_authenticated
+    unless Author.count == 0 || current_user
+      redirect_to root_path
+      return false
+    end
+  end
+
   def index
     @articles = Article.all
+
+    @first_time = true if Author.count == 0
+
   end
 
   def show
@@ -38,9 +50,9 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    
+
     flash.alert = "Article deleted"
-    
+
     redirect_to articles_path
   end
 

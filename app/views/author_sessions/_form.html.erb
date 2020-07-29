@@ -1,0 +1,7 @@
+<div class="container">
+  <%= simple_form_for :login, { url: login_path } do |f| %>
+    <%= f.input :email, input_html: { name: "email" } %>
+    <%= f.input :password, input_html: { name: "password" } %>
+    <%= f.button :submit, "Login", class: "btn-primary" %>
+  <% end %>
+</div>

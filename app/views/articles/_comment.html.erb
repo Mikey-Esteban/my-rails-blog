@@ -7,6 +7,9 @@
   <div class="card">
     <div class="card-header">
       <h5>Comment by <%= comment.name %></h5>
+      <% if logged_in? %>
+        <%= link_to 'Delete', "/articles/#{comment.article_id}/comments/#{comment.id}", method: :delete, data: { confirm: 'Really delete comment?' } %>
+      <% end %>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
